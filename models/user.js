@@ -13,7 +13,7 @@ const User = db.define("user", {
   },
   role: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
 });
 module.exports = User;

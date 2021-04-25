@@ -59,9 +59,9 @@ router.get("/", validateSession, (req, res) => {
  *** UPDATE PRODUCTSLOG ***
  **************************************** */
 router.put("/update/:id", validateSession, function (req, res) {
-  // if (req.user.role !== "admin") {
-  //   res.send.json({ error: "You are not authorized!" });
-  // }
+  if (req.user.role !== "admin") {
+    res.send.json({ error: "You are not authorized!" });
+  }
   const updateProductslogEntry = {
     design_name: req.body.productslog.design_name,
     product_description: req.body.productslog.product_description,
