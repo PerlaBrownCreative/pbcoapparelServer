@@ -3,6 +3,7 @@ const Sequelize = require("sequelize");
 const sequelize = new Sequelize("pbco-apparel", "postgres", "password", {
   host: "localhost",
   dialect: "postgres",
+  port: 3000
 });
 
 sequelize.authenticate().then(
