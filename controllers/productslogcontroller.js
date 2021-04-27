@@ -42,10 +42,10 @@ router.delete("/delete/:id", validateSession, function (req, res) {
 /* ***************************************
  *** GET ALL PRODUCT LOGS ***
  **************************************** */
-router.get("/", validateSession, (req, res) => {
-  if (req.user.role !== "admin") {
-    res.send.json({ error: "You are not authorized!" });
-  }
+router.get("/", (req, res) => {
+  // if (req.user.role !== "admin") {
+  //   res.send.json({ error: "You are not authorized!" });
+  // }
 
   // let id = req.productslog.id;
   Productslog.findAll({
