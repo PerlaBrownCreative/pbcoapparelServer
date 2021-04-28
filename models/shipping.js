@@ -30,5 +30,9 @@ const Shipping = db.define("shipping", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  image: {
+    type: DataTypes.STRING,
+    allowNull: false
+  }
 });
 module.exports = Shipping;

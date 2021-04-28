@@ -15,6 +15,7 @@ router.post("/create", validateSession, (req, res) => {
     state: req.body.shipping.state,
     zip_code: req.body.shipping.zip_code,
     mobile_number: req.body.shipping.mobile_number,
+    image: req.body.image,
     owner: req.user.id,
   };
   Shipping.create(shippingEntry)
@@ -57,6 +58,7 @@ router.put("/update/:id", validateSession, function (req, res) {
     state: req.body.shipping.state,
     zip_code: req.body.shipping.zip_code,
     mobile_number: req.body.shipping.mobile_number,
+    image: req.body.image,
     owner: req.user.id,
   };
 
