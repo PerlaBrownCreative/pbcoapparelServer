@@ -20,9 +20,15 @@ const Productslog = db.define("productslog", {
   },
   image: {
     type: DataTypes.STRING,
+    allowNull: false,
   },
   price: {
     type: DataTypes.STRING,
+    allowNull: false,
   },
+  amount: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  }
 });
 module.exports = Productslog;

@@ -18,6 +18,7 @@ router.post("/create", validateSession, (req, res) => {
     size: req.body.productslog.size,
     image: req.body.productslog.image,
     price: req.body.productslog.price,
+    amount: req.body.productslog.amount,
     owner: req.user.id,
   };
   Productslog.create(productslogEntry)
@@ -69,6 +70,7 @@ router.put("/update/:id", validateSession, function (req, res) {
     size: req.body.productslog.size,
     image: req.body.productslog.image,
     price: req.body.productslog.price,
+    amount: req.body.productslog.amount,
     owner: req.user.id,
   };
 
