@@ -4,7 +4,7 @@ const validateSession = require("../middleware/validate-session");
 const router = Router();
 
 /* ***************************************
- *** PRODUCT LOG CREATE ***
+ *** shipping CREATE ***
  **************************************** */
 router.post("/create", validateSession, (req, res) => {
   const shippingEntry = {
@@ -16,7 +16,7 @@ router.post("/create", validateSession, (req, res) => {
     zip_code: req.body.shipping.zip_code,
     mobile_number: req.body.shipping.mobile_number,
     image: req.body.shipping.image,
-    owner: req.user.id,
+    userId: req.user.id,
   };
   Shipping.create(shippingEntry)
     .then((shipping) => res.status(200).json(shipping))
@@ -24,7 +24,7 @@ router.post("/create", validateSession, (req, res) => {
 });
 
 /* ***************************************
- *** PRODUCT LOG DELETE ***
+ *** shipping DELETE ***
  **************************************** */
 router.delete("/delete/:id", validateSession, function (req, res) {
   const query = { where: { id: req.params.id } };
@@ -38,16 +38,17 @@ router.delete("/delete/:id", validateSession, function (req, res) {
  *** get all logs ***
  **************************************** */
 router.get("/", validateSession, (req, res) => {
-  // let id = req.productslog.id;
-  Shipping.findAll({
-    // where: { id: id },
+  console.log(req.user.id)
+  let userid = req.user.id;
+  Shipping.findOne({
+    where: { userId: userid },
   })
     .then((shipping) => res.status(200).json(shipping))
     .catch((err) => res.status(500).json({ error: err }));
 });
 
 /* ***************************************
- *** UPDATE PRODUCTSLOG ***
+ *** UPDATE shipping ***
  **************************************** */
 router.put("/update/:id", validateSession, function (req, res) {
   const updateShippingEntry = {
@@ -59,7 +60,7 @@ router.put("/update/:id", validateSession, function (req, res) {
     zip_code: req.body.shipping.zip_code,
     mobile_number: req.body.shipping.mobile_number,
     image: req.body.shipping.image,
-    owner: req.user.id,
+    userId: req.user.id,
   };
 
   const query = { where: { id: req.params.id } };

@@ -7,6 +7,9 @@ const Orders = require("./orders");
 const Orderdetails = require("./orderdetails");
 
 // Setup Associations
+User.hasOne(Shipping);
+Shipping.belongsTo(User);
+
 User.hasMany(Reviews);
 Reviews.belongsTo(User);
 
@@ -22,11 +25,8 @@ Productscategory.belongsTo(Productslog);
 // Orderdetails.hasMany(Productslog);
 // Productslog.belongsTo(Orderdetails);
 
-Orders.hasOne(Shipping);
-Shipping.belongsTo(Orders);
-
-Orders.hasOne(Orderdetails);
-Orderdetails.belongsTo(Orders);
+// Orders.hasOne(Orderdetails);
+// Orderdetails.belongsTo(Orders);
 
 module.exports = {
   User,

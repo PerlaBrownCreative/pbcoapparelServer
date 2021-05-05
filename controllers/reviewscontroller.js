@@ -10,7 +10,7 @@ router.post("/create", validateSession, (req, res) => {
   const reviewsEntry = {
     rate: req.body.reviews.rate,
     review: req.body.reviews.review,
-    owner: req.user.id,
+    userId: req.user.id,
   };
   Reviews.create(reviewsEntry)
     .then((reviews) => res.status(200).json(reviews))
@@ -47,7 +47,7 @@ router.put("/update/:id", validateSession, function (req, res) {
   const updatereviewsEntry = {
     rate: req.body.reviews.rate,
     review: req.body.reviews.review,
-    owner: req.user.id,
+    userId: req.user.id,
   };
 
   const query = { where: { id: req.params.id } };

@@ -18,8 +18,7 @@ router.post("/create", validateSession, (req, res) => {
     size: req.body.productslog.size,
     image: req.body.productslog.image,
     price: req.body.productslog.price,
-    amount: req.body.productslog.amount,
-    owner: req.user.id,
+    userId: req.user.id,
   };
   Productslog.create(productslogEntry)
     .then((productslog) => res.status(200).json(productslog))
@@ -57,6 +56,22 @@ router.get("/", (req, res) => {
 });
 
 /* ***************************************
+ *** GET one PRODUCT LOGS ***
+ **************************************** */
+router.get("/:id", (req, res) => {
+  // if (req.user.role !== "admin") {
+  //   res.send.json({ error: "You are not authorized!" });
+  // }
+  // console.log(req.productslog.id)
+  let id = req.params.id;
+  Productslog.findAll({
+    where: { id: id },
+  })
+    .then((productslog) => res.status(200).json(productslog))
+    .catch((err) => res.status(500).json({ error: err }));
+});
+
+/* ***************************************
  *** UPDATE PRODUCTSLOG ***
  **************************************** */
 router.put("/update/:id", validateSession, function (req, res) {
@@ -70,8 +85,7 @@ router.put("/update/:id", validateSession, function (req, res) {
     size: req.body.productslog.size,
     image: req.body.productslog.image,
     price: req.body.productslog.price,
-    amount: req.body.productslog.amount,
-    owner: req.user.id,
+    userId: req.user.id,
   };
 
   const query = { where: { id: req.params.id } };
