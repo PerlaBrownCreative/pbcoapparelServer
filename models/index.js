@@ -10,14 +10,11 @@ const Orderdetails = require("./orderdetails");
 User.hasOne(Shipping);
 Shipping.belongsTo(User);
 
-User.hasMany(Reviews);
+User.hasOne(Reviews);
 Reviews.belongsTo(User);
 
 User.hasMany(Orders);
 Orders.belongsTo(User);
-
-Productslog.hasMany(Reviews);
-Reviews.belongsTo(Productslog);
 
 Productslog.hasOne(Productscategory);
 Productscategory.belongsTo(Productslog);

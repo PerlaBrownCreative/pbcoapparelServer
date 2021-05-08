@@ -17,6 +17,8 @@ router.post("/create", validateSession, (req, res) => {
     .catch((err) => res.status(500).json({ error: err }));
 });
 
+
+
 /* ***************************************
  *** REVIEWS DELETE ***
  **************************************** */
@@ -28,10 +30,12 @@ router.delete("/delete/:id", validateSession, function (req, res) {
     .catch((err) => res.status(500).json({ error: err }));
 });
 
+
+
 /* ***************************************
  *** GET ALL REVIEWS ***
  **************************************** */
-router.get("/", validateSession, (req, res) => {
+router.get("/", (req, res) => {
   // let id = req.body.user.id;
   Reviews.findAll({
     // where: { owner: id },
@@ -39,6 +43,22 @@ router.get("/", validateSession, (req, res) => {
     .then((reviews) => res.status(200).json(reviews))
     .catch((err) => res.status(500).json({ error: err }));
 });
+
+/* ***************************************
+ *** get one logs ***
+ **************************************** */
+ router.get("/mine", validateSession, (req, res) => {
+  console.log(req.user.id)
+  let userid = req.user.id;
+  Reviews.findOne({
+    where: { userId: userid },
+  })
+    .then((reviews) => res.status(200).json(reviews))
+    .catch((err) => res.status(500).json({ error: err }));
+});
+
+
+
 
 /* ***************************************
  *** UPDATE REVIEWS ***
@@ -58,3 +78,5 @@ router.put("/update/:id", validateSession, function (req, res) {
 });
 
 module.exports = router;
+
+

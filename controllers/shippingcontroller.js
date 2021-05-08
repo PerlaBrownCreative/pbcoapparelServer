@@ -35,7 +35,7 @@ router.delete("/delete/:id", validateSession, function (req, res) {
 });
 
 /* ***************************************
- *** get all logs ***
+ *** get one logs ***
  **************************************** */
 router.get("/", validateSession, (req, res) => {
   console.log(req.user.id)
