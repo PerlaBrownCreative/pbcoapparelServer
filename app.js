@@ -25,6 +25,6 @@ app.use("/shipping", shipping);
 app.use("/productscategory", productscategory);
 app.use("/orderdetails", orderdetails);
 
-app.listen(4000, function () {
-  console.log("App is listening on port 4000");
+app.listen(process.env.PORT, () => {
+  console.log(`server is listening on port ${process.env.PORT}`);
 });

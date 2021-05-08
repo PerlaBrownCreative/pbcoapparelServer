@@ -1,9 +1,13 @@
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize("pbco-apparel", "postgres", "password", {
-  host: "localhost",
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
-  port: 3000
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    }
+  }
 });
 
 sequelize.authenticate().then(
