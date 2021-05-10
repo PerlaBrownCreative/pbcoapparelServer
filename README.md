@@ -1,4 +1,25 @@
 # pbcoapparelServer
+
+## General Info
+This github project is a general Node Server for an ecommerce store. 
+Utilizing:
+1. PostgreSql
+2. Express
+3. Node
+
+## Installation
+***
+A little intro about the installation. 
+```
+$ git clone https://example.com
+$ cd ../path/to/the/file
+$ npm install
+$ npm start
+```
+
+For more info on Nodemon see below:
+
+
 <p align="center">
   <img src="https://user-images.githubusercontent.com/13700/35731649-652807e8-080e-11e8-88fd-1b2f6d553b2d.png" alt="Nodemon Logo">
 </p>
