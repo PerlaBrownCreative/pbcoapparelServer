@@ -19,8 +19,9 @@ $ npm start
 
 ## Examples of Server using Postman:
 ![](images/example_create_login.jpg)
+![](images/example_login.jpg)
+![](images/example_create_profile.jpg)
 
-![](src/Images/pbcoapparel_homepage.jpg)
 
 For more info on Nodemon see below:
 
